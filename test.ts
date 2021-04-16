@@ -1,14 +1,17 @@
-interface ArrayTypes {
-  [key: string]: string | number | boolean;
+type ObjectValueTypes = string | number | boolean;
+type ElementsTypes = string | number | ObjInArrayTypes;
+
+interface ObjInArrayTypes {
+  [key: string]: ObjectValueTypes;
 }
 
 interface ReturnedObjTypes {
-  [key: string]: Array<string | number | ArrayTypes>;
+  [key: string]: ElementsTypes;
 }
 
 const groupBy = (
-  elements: Array<number | string | ArrayTypes>,
-  cb: (el) => string | number | boolean
+  elements:  Array<ElementsTypes>,
+  cb: (el: ElementsTypes) => ObjectValueTypes
 ): ReturnedObjTypes  => {
 
   const returnedObj = {};
